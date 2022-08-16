@@ -2,19 +2,6 @@ import openpyxl
 import graficos
 from openpyxl.styles import Alignment, Border, Side
 
-def worksheets_search(ws_name, nome_do_arquivo):
-    planilha = openpyxl.load_workbook(nome_do_arquivo)
-    # ----------------CRIAÇÃO DA ABA (WORKSHEETS)----------------
-    if f'RELATÓRIO_{ws_name}' in planilha.sheetnames:       # Se o worksheet já existe, o programa seleciona a aba
-        aba_relatorio = planilha[f'RELATÓRIO_{ws_name}']
-        return aba_relatorio
-        # print('a aba já existe')
-    else:                                                   # Se não existir, cria o worksheet
-        modelo = planilha[f'Modelo']
-        aba_relatorio = planilha.copy_worksheet(modelo)     # É criado com base no modelo na planilha
-        aba_relatorio.title = f'RELATÓRIO_{ws_name}'
-        return aba_relatorio
-
 
 def rel_geral():
     nome_do_arquivo = 'teste.xlsx'
